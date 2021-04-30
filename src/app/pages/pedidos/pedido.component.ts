@@ -107,7 +107,7 @@ export class PedidoComponent implements OnInit{
             }
             this.mensaje.mensajeError("El pedido se guardó correctamente","Error","success");
             this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-                this.router.navigate(['/pedido']);
+                this.router.navigate(['/pedidoS']);
             });
         });
     }
@@ -140,7 +140,7 @@ export class PedidoComponent implements OnInit{
             this.mensaje.mensajeError("El pedido se eliminó correctamente","Completado!","success");
         });
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.router.navigate(['/pedido']);
+            this.router.navigate(['/pedidoS']);
         });
     }
 

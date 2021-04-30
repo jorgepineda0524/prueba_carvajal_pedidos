@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-chrome",
+            "type": "chrome",
             "request": "launch",
-            "name": "Open tutorial-components.html",
-            "file": "c:\\Users\\jorge.pineda\\Documents\\prueba_carvajal_pedidos\\documentation\\tutorial-components.html"
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:4200",
         }
     ]
 }
