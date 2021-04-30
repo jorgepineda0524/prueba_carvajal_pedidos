@@ -16,6 +16,7 @@ export const environment = {
   pathEliminarUsuario: '/Usuario/EliminarUsuario',
 
   pathListarProductos: '/Producto/ListarProductos',
+  pathObtenerProducto: '/Producto/ObtenerProducto/',
   pathActualizarProducto: '/Producto/ActualizarProducto',
   pathAgregarProducto: '/Producto/AgregarProducto',
   pathEliminarProducto: '/Producto/EliminarProducto',

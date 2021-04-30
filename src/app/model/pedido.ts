@@ -1,7 +1,7 @@
 export class Pedido {
-    pedID: number;
-    usuID: number;
-    proID: number;
+    pedID?: number;
+    pedUsu: number;
+    pedPro: number;
     pedVrUnit: number;
     pedCant: number;
     pedSubTot: number;
@@ -10,8 +10,8 @@ export class Pedido {
 
     constructor(pedido) {
       this.pedID = pedido.pedID;
-      this.usuID = pedido.usuID;
-      this.proID = pedido.proID;
+      this.pedUsu = pedido.pedUsu;
+      this.pedPro = pedido.pedPro;
       this.pedVrUnit = pedido.pedVrUnit;
       this.pedCant = pedido.pedCant;
       this.pedSubTot = pedido.pedSubTot;

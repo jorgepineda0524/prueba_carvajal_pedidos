@@ -1,0 +1,118 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="card card-user">
+      <div class="image">
+        
+      </div>
+      <div class="card-body">
+        <div class="author">
+          <a href="#">
+            <h5 class="title">Generar pedidos</h5>
+          </a>
+          <div class="col-md-10 pr-1">
+            <div class="form-group">
+              <label>Usuario:</label>
+              <select name="cars" class="form-control" (change)="usuarioSeleccionado($event)">
+                <option >-Seleccione un producto-</option>
+                <option *ngFor="let usu of usuarios" value="{{usu.usuID}}">{{usu.usuNombre}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-10 pr-1">
+            <div class="form-group">
+              <label>Producto:</label>
+              <select name="cars" class="form-control" (change)="productoSeleccionado($event)"> 
+                <option >-Seleccione un producto-</option>
+                <option *ngFor="let pro of listaProductos" value="{{pro.proID}}">{{pro.proDesc}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-10 pr-1">
+            <div class="form-group">
+              <label>Valor unitario</label>
+              <input type="text" class="form-control" disabled="true" value="{{valorProSelect}}"/>
+            </div>
+          </div>
+          <div class="col-md-10 pr-1">
+            <div class="form-group">
+              <label>Cantidad</label>
+              <input type="number" class="form-control" (keyup)="cantidadIngresada($event)"/>
+            </div>
+          </div>
+          <div class="col-md-10 pr-1">
+            <div class="form-group">
+              <label>SubTotal</label>
+              <input type="number" class="form-control" disabled="true" value="{{subTotalPedido}}"/>
+            </div>
+          </div>
+          <div class="col-md-10 pr-1">
+            <div class="form-group">
+              <label>IVA</label>
+              <input type="number" (keyup)="IVAIngresado($event)" class="form-control" />
+            </div>
+          </div>
+          <div class="col-md-10 pr-1">
+            <div class="form-group">
+              <label>Total</label>
+              <input type="number" class="form-control" disabled="true" value="{{totalPedido}}"/>
+            </div>
+          </div>
+          <div class="update ml-auto mr-auto">
+            <button (click)="guardarPedido()" class="btn btn-primary btn-round">Guardar</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        
+        <div class="button-container">
+          <div class="row">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-8">
+    <div class="card card-user">
+      <div class="card-header">
+        <h5 class="card-title">Pedidos generados</h5>
+      </div>
+      <div class="card-body">
+     
+     
+        <div class="table-responsive">
+          <table st-table="listaPedidos" class="table table-striped">
+            <thead>
+            <tr>
+              <th>Id usuario</th>
+              <th>Id producto</th>
+              <th>Valor unitario</th>
+              <th>Cantidad</th>
+              <th>SubTotal</th>
+              <th>IVA</th>
+              <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let row of listaPedididos">
+              <td>{{row.pedUsu}}</td>
+              <td>{{row.pedPro}}</td>
+              <td>${{row.pedVrUnit}}</td>
+              <td>{{row.pedCant}}</td>
+              <td>${{row.pedSubTot}}</td>
+              <td>{{row.pedIVA}}%</td>
+              <td>${{row.pedTotal}}</td>
+              <td><button type="button" (click)="eliminarPedido(row)" class="btn btn-sm btn-danger">
+                <i class="glyphicon glyphicon-remove-circle">
+                  X
+                </i>
+              </button></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

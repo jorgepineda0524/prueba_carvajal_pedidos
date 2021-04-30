@@ -57,7 +57,7 @@ errorHandler(error: HttpErrorResponse) {
       `body was: ${error.error}`);
   }
   return throwError(
-    'Something bad happened; please try again later.');
+    error.error);
 }
 
 }

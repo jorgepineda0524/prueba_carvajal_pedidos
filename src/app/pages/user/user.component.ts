@@ -2,6 +2,7 @@ import { MensajeService } from './../../Services/mensaje.service';
 import { Usuario } from 'app/model/usuario';
 import { UsuarioService } from 'app/Services/usuarios.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'user-cmp',
@@ -19,6 +20,7 @@ export class UserComponent implements OnInit{
     constructor(
       private usuarioServicio: UsuarioService,
       private mensaje: MensajeService,
+      private router: Router
       ) {
     }
 
@@ -35,7 +37,7 @@ export class UserComponent implements OnInit{
 
     guardarUsuario(nombreUsu, password){
         if(nombreUsu.value === '' || password.value === ''){
-            this.mensaje.mensajeError("Debe completar los campos requeridos");
+            this.mensaje.mensajeError("Debe completar los campos requeridos","Error","danger");
             return;
         }
         let usuario: Usuario = {
@@ -57,10 +59,11 @@ export class UserComponent implements OnInit{
                   );
                   this.listaUsuarios.unshift(new Usuario(usuario));
             }
-            this.mensaje.mensajeExistoso("El usuario se guardó correctamente");
-            this.usuarioID = null;
-            this.nombreUsu = null;
-            this.passUsu = null;
+            this.mensaje.mensajeError("El usuario se guardó correctamente","Completado!","success");
+        });
+
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/user']);
         });
     }
 
@@ -77,6 +80,7 @@ export class UserComponent implements OnInit{
             usuPass: usuarioRow.usuPass
         };
         this.usuarioServicio.eliminarUsuario(usuario).subscribe(res =>{
+            this.mensaje.mensajeError("El usuario se eliminó correctamente","Completado!","success");
             this.listaUsuarios.splice(
                 this.listaUsuarios.findIndex(
                   (existeUsuario) =>
@@ -84,7 +88,11 @@ export class UserComponent implements OnInit{
                 ),
                 1
               );
-            this.mensaje.mensajeExistoso("El usuario se eliminó correctamente");
+        }, error => {
+            this.mensaje.mensajeError(error,"Error","danger");
+        });
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/user']);
         });
     }
 }

@@ -7,23 +7,23 @@
       <div class="card-body">
         <div class="author">
           <a href="#">
-            <h5 class="title">Administrar usuarios</h5>
+            <h5 class="title">Administrar productos</h5>
           </a>
 
           <div class="col-md-7 pr-1">
             <div class="form-group">
-              <label>Nombre de usuario</label>
-              <input type="text" class="form-control" placeholder="Nombre usuario" value="{{nombreUsu}}" #nomUsu required/>
+              <label>Descripción</label>
+              <input type="text" class="form-control" placeholder="ejemplo" value="{{descPro}}" #descripPro required/>
             </div>
           </div>
           <div class="col-md-7 pr-1">
             <div class="form-group">
-              <label>Contraseña</label>
-              <input type="password" class="form-control" placeholder="Contraseña" value="{{passUsu}}" #password required/>
+              <label>Valor</label>
+              <input type="number" class="form-control" placeholder="1000" value="{{valorPro}}" #valorPro required/>
             </div>
           </div>
           <div class="update ml-auto mr-auto">
-            <button (click)="guardarUsuario(nomUsu,password)" class="btn btn-primary btn-round">Guardar</button>
+            <button (click)="guardarProducto(descripPro,valorPro)" class="btn btn-primary btn-round">Guardar</button>
           </div>
         </div>
       </div>
@@ -41,31 +41,31 @@
   <div class="col-md-8">
     <div class="card card-user">
       <div class="card-header">
-        <h5 class="card-title">Usuarios</h5>
+        <h5 class="card-title">Productos</h5>
       </div>
       <div class="card-body">
      
      
         <div class="table-responsive">
-          <table st-table="listaUsuarios" class="table table-striped">
+          <table st-table="listaProductos" class="table table-striped">
             <thead>
             <tr>
-              <th>Id Usuario</th>
-              <th>Nombre de usuario</th>
-              <th>Contraseña</th>
+              <th>Id producto</th>
+              <th>Descripción</th>
+              <th>Valor</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let row of listaUsuarios">
-              <td>{{row.usuID}}</td>
-              <td>{{row.usuNombre}}</td>
-              <td>******</td>
-              <td><button type="button" (click)="eliminarUsuario(row)" class="btn btn-sm btn-danger">
+            <tr *ngFor="let row of listaProductos">
+              <td>{{row.proID}}</td>
+              <td>{{row.proDesc}}</td>
+              <td>${{row.proValor}}</td>
+              <td><button type="button" (click)="eliminarProducto(row)" class="btn btn-sm btn-danger">
                 <i class="glyphicon glyphicon-remove-circle">
                   X
                 </i>
               </button></td>
-              <td><button type="button" (click)="actualizarUsuario(row)" class="btn btn-sm btn-success">
+              <td><button type="button" (click)="actualizarProducto(row)" class="btn btn-sm btn-success">
                 <i class="glyphicon glyphicon-remove-circle">
                   ✎
                 </i>
